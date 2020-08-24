@@ -23,7 +23,7 @@ proc processCommand(client: Client, arguments: seq[string]): Future[void] {.asyn
         of "clear":
             asyncCheck client.ws.send("clearClient")
         else:
-            asyncCheck client.ws.send("{de1b1b}Unknown command. Use {000000}/help{de1b1b} to view list of commands")
+            asyncCheck client.ws.send("{de1b1b}Unknown command. Use {000000}/help{de1b1b} to view list of commands{}")
     return
 
 proc sendToAll(message: string, ignore: Client = nil): Future[void] {.async, gcsafe.} =
