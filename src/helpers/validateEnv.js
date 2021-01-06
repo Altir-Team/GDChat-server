@@ -1,0 +1,1 @@
+module.exports = (variables = []) => variables.every(v => !!process.env[v]);

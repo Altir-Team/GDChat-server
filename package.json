@@ -2,12 +2,13 @@
   "name": "gdchat",
   "version": "1.0.0",
   "description": "Web server for GD Chat",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js"
   },
   "author": "bit0r1n",
   "dependencies": {
-    "ws": "^7.2.1"
+    "better-sqlite3": "^7.1.2",
+    "koa": "^2.13.0"
   }
 }
