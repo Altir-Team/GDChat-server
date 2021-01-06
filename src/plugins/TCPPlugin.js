@@ -91,7 +91,7 @@ module.exports = class TCPPlugin {
         const client = new Client({ socket, user });
         this.clients.set(user.id, client);
 
-        socket.on("end", () => this.onClose(client));
+        socket.on("close", () => this.onClose(client));
 
         const loginMessage = new Command({
             op: Command.OP_CODES.HELLO,
