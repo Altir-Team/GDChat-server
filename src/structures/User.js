@@ -10,8 +10,8 @@ module.exports = class User extends Base {
         this.token = data.token || null;
     }
     static validateNickname(name) {
-        const parsedName = name?.match(/^[a-zA-Z0-9]+$/g);
-        return parsedName?.length > 3 ? parsedName : null;
+        const parsedName = /^[a-zA-Z0-9]+$/.test(name);
+        return parsedName ? name : null;
     }
     changeUsername(name) {
         const parsed = User.validateNickname(name);
