@@ -23,5 +23,18 @@ module.exports = [
             ctx.body = msg;
             next();
         }
+    },
+    {
+        method: "GET",
+        execute: async function (ctx, next) {
+            const authCheck = this.app.plugins.get("managers").get("users").getByAuth(ctx.headers.authorization);
+            ctx.assert(authCheck, 401);
+            const pattern = ctx.query.id;
+            ctx.assert(pattern, 403);
+            const msg = this.app.plugins.get("managers").get("messages").find(x => x.id == pattern);
+            ctx.assert(msg, 404);
+            ctx.body = msg;
+            next();
+        }
     }
 ].map(r => { r.path = "/api/messages"; return r; });
